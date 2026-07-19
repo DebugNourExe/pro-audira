@@ -178,7 +178,7 @@ headphoneMove
   ease: "none"
 })
 // Reveal sections on scroll
-function revealOnScroll(trigger, elements, start = "top 75%") {
+function revealOnScroll(trigger, elements, start = "top 75%", reverse = true) {
   const items = gsap.utils.toArray(elements);
   gsap.set(items, {
     y: 80,
@@ -198,8 +198,9 @@ function revealOnScroll(trigger, elements, start = "top 75%") {
   start: start,
   end: "top 80%",
   onEnter: () => tl.play(),
-  onEnterBack: () => tl.reverse()
-});
+  onEnterBack: () => {
+    if (reverse) tl.reverse();
+  }});
 }
 // Product Info
 revealOnScroll(".product-info", ".product-info-text > *");
@@ -215,7 +216,8 @@ revealOnScroll(".PureEscape", ".PureEscape-img, .PureEscape-text");
 revealOnScroll(
   ".footer",
   ".footer-logo, .footer .footer-links .nav-bar li, .footer .footer-btn a",
-  "top 95%"
+  "top 95%",
+  false
 );
 // Image section animation
 const imageSectionTl = gsap.timeline({
@@ -232,11 +234,8 @@ imageSectionTl.from(".img-box", {
 ScrollTrigger.create({
   trigger: ".image-section",
   start: "top 75%",
-  end: "top 20%",
   onEnter: () => imageSectionTl.play(),
-  onEnterBack: () => imageSectionTl.reverse()
 });
-
 
 
 
