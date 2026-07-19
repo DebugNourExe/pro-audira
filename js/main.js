@@ -51,7 +51,7 @@ gsap.from(".letter", {
 });
 // lenis smooth scroll
 const lenis = new Lenis({
-  duration: 4,
+  duration: 2,
   smoothWheel: true,
   smoothTouch: false
 });
